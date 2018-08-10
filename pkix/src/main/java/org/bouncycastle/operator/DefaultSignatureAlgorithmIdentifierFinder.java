@@ -178,6 +178,8 @@ public class DefaultSignatureAlgorithmIdentifierFinder
         noParams.add(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_256);
         noParams.add(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_512);
 
+        noParams.add(UAObjectIdentifiers.dstu4145WithGost34311le);
+
         //
         // SPHINCS-256
         //
@@ -283,6 +285,7 @@ public class DefaultSignatureAlgorithmIdentifierFinder
         digestOids.put(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_256, RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
         digestOids.put(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_512, RosstandartObjectIdentifiers.id_tc26_gost_3411_12_512);
         digestOids.put(GMObjectIdentifiers.sm2sign_with_sm3, GMObjectIdentifiers.sm3);
+        digestOids.put(UAObjectIdentifiers.dstu4145WithGost34311le, UAObjectIdentifiers.gost34311);
     }
 
     private static AlgorithmIdentifier generate(String signatureAlgorithm)
