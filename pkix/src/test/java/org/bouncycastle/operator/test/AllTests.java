@@ -13,11 +13,13 @@ import junit.framework.TestCase;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.DEROctetString;
+import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.RSAESOAEPparams;
 import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -63,6 +65,10 @@ public class AllTests
         assertEquals(nameFinder.getAlgorithmName(TeleTrusTObjectIdentifiers.rsaSignatureWithripemd160), "RIPEMD160WITHRSA");
         assertEquals(nameFinder.getAlgorithmName(new AlgorithmIdentifier(OIWObjectIdentifiers.elGamalAlgorithm, DERNull.INSTANCE)), "ELGAMAL");
         assertEquals(nameFinder.getAlgorithmName(new AlgorithmIdentifier(PKCSObjectIdentifiers.rsaEncryption, DERNull.INSTANCE)), "RSA");
+        
+        // UA Crypto
+        assertEquals(nameFinder.getAlgorithmName(UAObjectIdentifiers.gost34311), "GOST34311");
+        assertEquals(nameFinder.getAlgorithmName(UAObjectIdentifiers.dstu4145WithGost34311le), "GOST34311WITHDSTU4145");
 
         assertEquals(nameFinder.getAlgorithmName(Extension.authorityKeyIdentifier), Extension.authorityKeyIdentifier.getId());
     }
@@ -75,7 +81,9 @@ public class AllTests
         kGen.initialize(2048);
 
         KeyPair kp = kGen.generateKeyPair();
-
+        checkAlgorithmId(kp, "GOST3411", CryptoProObjectIdentifiers.gostR3411);
+   //     checkAlgorithmId(kp, "GOST34311", UAObjectIdentifiers.gost34311);
+               
         checkAlgorithmId(kp, "SHA-1", OIWObjectIdentifiers.idSHA1);
         checkAlgorithmId(kp, "SHA-224", NISTObjectIdentifiers.id_sha224);
         checkAlgorithmId(kp, "SHA-256", NISTObjectIdentifiers.id_sha256);

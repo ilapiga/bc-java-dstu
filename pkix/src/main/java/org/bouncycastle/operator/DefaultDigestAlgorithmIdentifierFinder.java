@@ -16,6 +16,7 @@ import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
 import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
 
@@ -34,6 +35,10 @@ public class DefaultDigestAlgorithmIdentifierFinder
         digestOids.put(OIWObjectIdentifiers.md4WithRSA, PKCSObjectIdentifiers.md4);
         digestOids.put(OIWObjectIdentifiers.sha1WithRSA, OIWObjectIdentifiers.idSHA1);
 
+    //    digestOids.put(UAObjectIdentifiers.dstu4145WithGost34311le, UAObjectIdentifiers.gost34311);
+     //   digestOids.put(UAObjectIdentifiers.dstu4145le, UAObjectIdentifiers.gost34311);
+  
+        
         digestOids.put(PKCSObjectIdentifiers.sha224WithRSAEncryption, NISTObjectIdentifiers.id_sha224);
         digestOids.put(PKCSObjectIdentifiers.sha256WithRSAEncryption, NISTObjectIdentifiers.id_sha256);
         digestOids.put(PKCSObjectIdentifiers.sha384WithRSAEncryption, NISTObjectIdentifiers.id_sha384);
@@ -119,6 +124,8 @@ public class DefaultDigestAlgorithmIdentifierFinder
         digestNameToOids.put("SHAKE-128", NISTObjectIdentifiers.id_shake128);
         digestNameToOids.put("SHAKE-256", NISTObjectIdentifiers.id_shake256);
 
+    //    digestNameToOids.put("GOST3411WITHDSTU4145", UAObjectIdentifiers.dstu4145le);
+
         digestNameToOids.put("GOST3411", CryptoProObjectIdentifiers.gostR3411);
         digestNameToOids.put("GOST3411-2012-256", RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256);
         digestNameToOids.put("GOST3411-2012-512", RosstandartObjectIdentifiers.id_tc26_gost_3411_12_512);
@@ -132,7 +139,9 @@ public class DefaultDigestAlgorithmIdentifierFinder
         digestNameToOids.put("RIPEMD256", TeleTrusTObjectIdentifiers.ripemd256);
 
         digestNameToOids.put("SM3", GMObjectIdentifiers.sm3);
-    }
+        
+        digestNameToOids.put("GOST34311", UAObjectIdentifiers.gost34311);
+      }
 
     public AlgorithmIdentifier find(AlgorithmIdentifier sigAlgId)
     {

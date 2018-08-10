@@ -81,6 +81,9 @@ public class SigNameTest
         checkName("SHA384withRSA/X9.31");
         checkName("SHA512withRSA/X9.31");
         checkName("WhirlpoolwithRSA/X9.31");
+        
+        checkName("GOST34311withDSTU4145");
+  //      checkName("DSTU4145withGOST3411");
     }
 
     public String getName()

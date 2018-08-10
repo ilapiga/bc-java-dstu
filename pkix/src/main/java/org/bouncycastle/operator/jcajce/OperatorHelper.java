@@ -38,6 +38,7 @@ import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.RSASSAPSSparams;
 import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
@@ -105,7 +106,13 @@ class OperatorHelper
         oids.put(TeleTrusTObjectIdentifiers.ripemd160, "RIPEMD160");
         oids.put(TeleTrusTObjectIdentifiers.ripemd256, "RIPEMD256");
 
+        // UA
+        oids.put(UAObjectIdentifiers.gost34311, "GOST34311");
+        
         asymmetricWrapperAlgNames.put(PKCSObjectIdentifiers.rsaEncryption, "RSA/ECB/PKCS1Padding");
+        
+        // UA
+        asymmetricWrapperAlgNames.put(UAObjectIdentifiers.dstu4145le, "DSTU4145");
 
         asymmetricWrapperAlgNames.put(CryptoProObjectIdentifiers.gostR3410_2001, "ECGOST3410");
 

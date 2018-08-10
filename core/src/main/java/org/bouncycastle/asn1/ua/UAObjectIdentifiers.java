@@ -15,8 +15,12 @@ public interface UAObjectIdentifiers
 {
     /** Base OID: 1.2.804.2.1.1.1 */
     static final ASN1ObjectIdentifier UaOid = new ASN1ObjectIdentifier("1.2.804.2.1.1.1");
-
+    
+    static final ASN1ObjectIdentifier gost34311 = UaOid.branch("1.2.1");
+    
     /** DSTU4145 Little Endian presentation.  OID: 1.2.804.2.1.1.1.1.3.1.1 */
+    // +++++++++ GOST 34.311
+    static final ASN1ObjectIdentifier dstu4145WithGost34311le  = UaOid.branch("1.3.1.1");
     static final ASN1ObjectIdentifier dstu4145le = UaOid.branch("1.3.1.1");
     /** DSTU4145 Big Endian presentation.  OID: 1.2.804.2.1.1.1.1.3.1.1.1 */
     static final ASN1ObjectIdentifier dstu4145be = UaOid.branch("1.3.1.1.1.1");
@@ -72,6 +76,7 @@ public interface UAObjectIdentifiers
     static final ASN1ObjectIdentifier dstu7624cbc_512 = UaOid.branch("1.1.3.5.3");
 
     /** DSTU7624 in OFB mode with 128 bit block/key presentation */
+    // 1.2.804.2.1.1.1.1.1.3.6.1
     static final ASN1ObjectIdentifier dstu7624ofb_128 = UaOid.branch("1.1.3.6.1");
     /** DSTU7624 in OFB mode with 256 bit block/key presentation */
     static final ASN1ObjectIdentifier dstu7624ofb_256 = UaOid.branch("1.1.3.6.2");

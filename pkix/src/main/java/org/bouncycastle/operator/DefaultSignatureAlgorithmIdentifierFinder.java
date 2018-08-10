@@ -45,8 +45,13 @@ public class DefaultSignatureAlgorithmIdentifierFinder
 
     static
     {
-    	algorithms.put("GOST3411WITHDSTU4145", UAObjectIdentifiers.dstu4145le);
-    	
+//    	algorithms.put("GOST3411WITHDSTU4145", UAObjectIdentifiers.dstu4145le);
+//    	algorithms.put("GOST3411WITHDSTU4145", UAObjectIdentifiers.dstu4145be);
+    	algorithms.put("DSTU4145", UAObjectIdentifiers.dstu4145le);
+    	algorithms.put("DSTU4145BE", UAObjectIdentifiers.dstu4145be);
+      	algorithms.put("GOST34311WITHDSTU4145", UAObjectIdentifiers.dstu4145WithGost34311le);
+       	algorithms.put("GOST34311", UAObjectIdentifiers.gost34311);
+       	
         algorithms.put("MD2WITHRSAENCRYPTION", PKCSObjectIdentifiers.md2WithRSAEncryption);
         algorithms.put("MD2WITHRSA", PKCSObjectIdentifiers.md2WithRSAEncryption);
         algorithms.put("MD5WITHRSAENCRYPTION", PKCSObjectIdentifiers.md5WithRSAEncryption);

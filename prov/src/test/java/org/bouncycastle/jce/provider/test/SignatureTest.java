@@ -5,6 +5,7 @@ import java.security.KeyPairGenerator;
 import java.security.SecureRandom;
 import java.security.Security;
 import java.security.Signature;
+import java.security.spec.ECGenParameterSpec;
 
 import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -104,7 +105,8 @@ public class SignatureTest
         checkSig(kp, "SHA384withRSA/X9.31");
         checkSig(kp, "SHA512withRSA/X9.31");
         checkSig(kp, "WhirlpoolwithRSA/X9.31");
-
+//        checkSig(kp, "GOST34311withDSTU4145");
+        
         kpGen = KeyPairGenerator.getInstance("DSA", "BC");
 
         kpGen.initialize(2048);
@@ -130,7 +132,7 @@ public class SignatureTest
         checkSig(kp, "SHA384withECDSA");
         checkSig(kp, "SHA512withECDSA");
         checkSig(kp, "RIPEMD160withECDSA");
-
+        
         kpGen = KeyPairGenerator.getInstance("EC", "BC");
 
         kpGen.initialize(521);
@@ -142,6 +144,7 @@ public class SignatureTest
         checkSig(kp, "SHA256withECNR");
         checkSig(kp, "SHA384withECNR");
         checkSig(kp, "SHA512withECNR");
+       
 
         kpGen = KeyPairGenerator.getInstance("ECGOST3410", "BC");
 
@@ -160,6 +163,17 @@ public class SignatureTest
         kp = kpGen.generateKeyPair();
 
         checkSig(kp, "GOST3411withGOST3410");
+        
+        
+        
+        
+        KeyPairGenerator czokeyGen = KeyPairGenerator.getInstance("DSTU4145", "BC");
+//        czokeyGen.initialize(czospec, czokeyRand);
+        czokeyGen.initialize( new ECGenParameterSpec("1.2.804.2.1.1.1.1.3.1.1.2.1"));
+        KeyPair czopair = czokeyGen.generateKeyPair();
+
+        
+        checkSig(czopair, "GOST34311withDSTU4145");
     }
 
     public String getName()

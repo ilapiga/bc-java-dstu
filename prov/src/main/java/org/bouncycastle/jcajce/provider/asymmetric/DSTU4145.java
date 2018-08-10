@@ -35,8 +35,8 @@ public class DSTU4145
             provider.addAlgorithm("Alg.Alias.Signature.DSTU-4145", "DSTU4145");
             provider.addAlgorithm("Alg.Alias.Signature.DSTU-4145-2002", "DSTU4145");
 
-            addSignatureAlgorithm(provider, "GOST3411", "DSTU4145LE", PREFIX + "SignatureSpiLe", UAObjectIdentifiers.dstu4145le);
-            addSignatureAlgorithm(provider, "GOST3411", "DSTU4145", PREFIX + "SignatureSpi", UAObjectIdentifiers.dstu4145be);
+            addSignatureAlgorithm(provider, "GOST34311", "DSTU4145", PREFIX + "SignatureSpiLe", UAObjectIdentifiers.dstu4145le);
+            addSignatureAlgorithm(provider, "GOST34311", "DSTU4145BE", PREFIX + "SignatureSpi", UAObjectIdentifiers.dstu4145be);
         }
     }
 }
