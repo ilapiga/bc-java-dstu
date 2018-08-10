@@ -165,15 +165,7 @@ public class GOST3411
             addHMACAlgorithm(provider, "GOST3411", PREFIX + "$HashMac", PREFIX + "$KeyGenerator");
             addHMACAlias(provider, "GOST3411", CryptoProObjectIdentifiers.gostR3411);
             
-            // ua
-            provider.addAlgorithm("MessageDigest.GOST34311", PREFIX + "$Digest");
-            provider.addAlgorithm("Alg.Alias.MessageDigest.GOST", "GOST34311");
-            provider.addAlgorithm("Alg.Alias.MessageDigest.GOST-34311", "GOST34311");
-            provider.addAlgorithm("Alg.Alias.MessageDigest." + UAObjectIdentifiers.gost34311, "GOST34311");
-
-            addHMACAlgorithm(provider, "GOST34311", PREFIX + "$HashMac", PREFIX + "$KeyGenerator");
-            addHMACAlias(provider, "GOST34311", UAObjectIdentifiers.gost34311);
-            //--
+         
 
             provider.addAlgorithm("MessageDigest.GOST3411-2012-256", PREFIX + "$Digest2012_256");
             provider.addAlgorithm("Alg.Alias.MessageDigest.GOST-2012-256", "GOST3411-2012-256");
@@ -193,10 +185,7 @@ public class GOST3411
 
             provider.addAlgorithm("SecretKeyFactory.PBEWITHHMACGOST3411", PREFIX + "$PBEWithMacKeyFactory");
             provider.addAlgorithm("Alg.Alias.SecretKeyFactory." + CryptoProObjectIdentifiers.gostR3411, "PBEWITHHMACGOST3411");
-            
-            //ua
-            provider.addAlgorithm("SecretKeyFactory.PBEWITHHMACGOST34311", PREFIX + "$PBEWithMacKeyFactory");
-            provider.addAlgorithm("Alg.Alias.SecretKeyFactory." + UAObjectIdentifiers.gost34311, "PBEWITHHMACGOST34311");
+           
         }
     }
 }

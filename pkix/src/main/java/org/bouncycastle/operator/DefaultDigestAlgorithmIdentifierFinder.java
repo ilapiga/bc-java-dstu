@@ -35,9 +35,9 @@ public class DefaultDigestAlgorithmIdentifierFinder
         digestOids.put(OIWObjectIdentifiers.md4WithRSA, PKCSObjectIdentifiers.md4);
         digestOids.put(OIWObjectIdentifiers.sha1WithRSA, OIWObjectIdentifiers.idSHA1);
 
-    //    digestOids.put(UAObjectIdentifiers.dstu4145WithGost34311le, UAObjectIdentifiers.gost34311);
-     //   digestOids.put(UAObjectIdentifiers.dstu4145le, UAObjectIdentifiers.gost34311);
-  
+digestOids.put(UAObjectIdentifiers.dstu4145WithGost34311le, UAObjectIdentifiers.gost34311);
+digestOids.put(UAObjectIdentifiers.dstu4145le, UAObjectIdentifiers.gost34311);
+//  
         
         digestOids.put(PKCSObjectIdentifiers.sha224WithRSAEncryption, NISTObjectIdentifiers.id_sha224);
         digestOids.put(PKCSObjectIdentifiers.sha256WithRSAEncryption, NISTObjectIdentifiers.id_sha256);
