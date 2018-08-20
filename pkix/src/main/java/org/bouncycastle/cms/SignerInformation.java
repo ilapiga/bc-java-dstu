@@ -10,12 +10,17 @@ import java.util.List;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
+import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.ASN1Set;
+import org.bouncycastle.asn1.DERApplicationSpecific;
 import org.bouncycastle.asn1.DERNull;
+import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.DERSet;
+import org.bouncycastle.asn1.DERTaggedObject;
+import org.bouncycastle.asn1.DERUniversalString;
 import org.bouncycastle.asn1.cms.Attribute;
 import org.bouncycastle.asn1.cms.AttributeTable;
 import org.bouncycastle.asn1.cms.CMSAlgorithmProtection;
@@ -562,6 +567,24 @@ public class SignerInformation
                     return rawVerifier.verify(resultDigest, this.getSignature());
                 }
             }
+//            
+//            if(encName.equals("1.2.804.2.1.1.1.1.3.1.1") && contentType.toString().equals("1.2.840.113549.1.7.1")) {
+//            	byte[] sigtmp = new byte[this.getSignature().length-1];
+//            	System.arraycopy(this.getSignature(), 1, sigtmp, 0, this.getSignature().length-1);
+//            	ASN1InputStream io = new ASN1InputStream(this.getSignature());
+//            	DERTaggedObject readObject = (DERTaggedObject)io.readObject();
+//        		
+//            	 return contentVerifier.verify(readObject.getObject().et);
+//            }
+
+            if(encName.equals("1.2.804.2.1.1.1.1.3.1.1")) {
+            	ASN1InputStream io = new ASN1InputStream(this.getSignature());
+        		DERApplicationSpecific readObject = (DERApplicationSpecific)io.readObject();
+        		DERUniversalString readObject2 = (DERUniversalString) readObject.getObject(readObject.getApplicationTag());
+        		ASN1OctetString octStr = new DEROctetString(readObject2.getOctets());
+            	 return contentVerifier.verify(octStr.getEncoded());
+            }
+            
 
             return contentVerifier.verify(this.getSignature());
         }

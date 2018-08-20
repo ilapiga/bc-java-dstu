@@ -13,6 +13,7 @@ import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.rosstandart.RosstandartObjectIdentifiers;
 import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
+import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.asn1.x9.X9ObjectIdentifiers;
@@ -31,6 +32,14 @@ public class DefaultCMSSignatureAlgorithmNameGenerator
 
     public DefaultCMSSignatureAlgorithmNameGenerator()
     {
+    	
+    	addEntries(UAObjectIdentifiers.dstu4145be, "GOST34311", "DSTU4145BE");
+    	addEntries(UAObjectIdentifiers.dstu4145be, "GOST34311", "DSTU4145BE");
+	    //algorithms.put(UAObjectIdentifiers.dstu4145le, "GOST3411WITHDSTU4145");
+    	addEntries(UAObjectIdentifiers.dstu4145le, "GOST34311", "DSTU4145");
+    	addEntries(UAObjectIdentifiers.dstu4145WithGost34311le, "GOST34311", "DSTU4145");
+    	addEntries(UAObjectIdentifiers.gost34311, "GOST34311", "DSTU4145");
+       	
         addEntries(NISTObjectIdentifiers.dsa_with_sha224, "SHA224", "DSA");
         addEntries(NISTObjectIdentifiers.dsa_with_sha256, "SHA256", "DSA");
         addEntries(NISTObjectIdentifiers.dsa_with_sha384, "SHA384", "DSA");
@@ -103,6 +112,7 @@ public class DefaultCMSSignatureAlgorithmNameGenerator
         encryptionAlgs.put(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_256, "ECGOST3410-2012-256");
         encryptionAlgs.put(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_512, "ECGOST3410-2012-512");
         encryptionAlgs.put(GMObjectIdentifiers.sm2sign_with_sm3, "SM2");
+        encryptionAlgs.put(UAObjectIdentifiers.dstu4145le, "DSTU4145");
 
         digestAlgs.put(PKCSObjectIdentifiers.md2, "MD2");
         digestAlgs.put(PKCSObjectIdentifiers.md4, "MD4");
@@ -124,6 +134,7 @@ public class DefaultCMSSignatureAlgorithmNameGenerator
         digestAlgs.put(RosstandartObjectIdentifiers.id_tc26_gost_3411_12_256,  "GOST3411-2012-256");
         digestAlgs.put(RosstandartObjectIdentifiers.id_tc26_gost_3411_12_512,  "GOST3411-2012-512");
         digestAlgs.put(GMObjectIdentifiers.sm3,  "SM3");
+        digestAlgs.put(UAObjectIdentifiers.gost34311,  "GOST34311");
     }
 
     /**

@@ -240,6 +240,11 @@ public class GOST34311Digest
         int     outOff)
     {
         finish();
+        
+//        byte[] tmp = new byte[H.length];
+//        for(int i = 0; i < H.length; i++) {
+//        	tmp[H.length - i - 1] = H[i];
+//        }
 
         System.arraycopy(H, 0, out, outOff, H.length);
 
