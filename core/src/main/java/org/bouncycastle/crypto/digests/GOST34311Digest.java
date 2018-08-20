@@ -33,7 +33,7 @@ public class GOST34311Digest
      */
     public GOST34311Digest()
     {
-        sBox = GOST28147Engine.getSBox("D-A");
+        sBox = GOST28147Engine.getSBox("DKE-1");
         cipher.init(true, new ParametersWithSBox(null, sBox));
 
         reset();
