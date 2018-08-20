@@ -63,6 +63,9 @@ class OperatorHelper
         //
         // reverse mappings
         //
+    	oids.put(UAObjectIdentifiers.dstu4145WithGost34311le, "GOST34311WITHDSTU4145");
+    	oids.put(UAObjectIdentifiers.dstu4145le, "GOST34311WITHDSTU4145");
+    	//oids.put(UAObjectIdentifiers.dstu4145le, "1.2.804.2.1.1.1.1.2.1WITH1.2.804.2.1.1.1.1.3.1.1");
         oids.put(new ASN1ObjectIdentifier("1.2.840.113549.1.1.5"), "SHA1WITHRSA");
         oids.put(PKCSObjectIdentifiers.sha224WithRSAEncryption, "SHA224WITHRSA");
         oids.put(PKCSObjectIdentifiers.sha256WithRSAEncryption, "SHA256WITHRSA");

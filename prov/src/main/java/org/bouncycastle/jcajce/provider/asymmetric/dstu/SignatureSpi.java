@@ -15,7 +15,7 @@ import org.bouncycastle.asn1.x509.X509ObjectIdentifiers;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.DSA;
 import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.GOST3411Digest;
+import org.bouncycastle.crypto.digests.GOST34311Digest;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.signers.DSTU4145Signer;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
@@ -42,12 +42,12 @@ public class SignatureSpi
         if (publicKey instanceof BCDSTU4145PublicKey)
         {
             param = ((BCDSTU4145PublicKey)publicKey).engineGetKeyParameters();
-            digest = new GOST3411Digest(expandSbox(((BCDSTU4145PublicKey)publicKey).getSbox()));
+            digest = new GOST34311Digest(expandSbox(((BCDSTU4145PublicKey)publicKey).getSbox()));
         }
         else
         {
             param = ECUtil.generatePublicKeyParameter(publicKey);
-            digest = new GOST3411Digest(expandSbox(DSTU4145Params.getDefaultDKE()));
+            digest = new GOST34311Digest(expandSbox(DSTU4145Params.getDefaultDKE()));
         }
 
         signer.init(false, param);
@@ -75,12 +75,12 @@ public class SignatureSpi
         {
             // TODO: add parameters support.
             param = ECUtil.generatePrivateKeyParameter(privateKey);
-            digest = new GOST3411Digest(expandSbox(DSTU4145Params.getDefaultDKE()));
+            digest = new GOST34311Digest();
         }
         else if (privateKey instanceof ECKey)
         {
             param = ECUtil.generatePrivateKeyParameter(privateKey);
-            digest = new GOST3411Digest(expandSbox(DSTU4145Params.getDefaultDKE()));
+            digest = new GOST34311Digest();
         }
 
         if (appRandom != null)

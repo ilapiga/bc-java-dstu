@@ -17,7 +17,7 @@ public class GOST34311DigestTest
 {
     private static final String[] messages =
     {
-        "test",
+        "for test only)",
     };
     
 //  If S-box = D-A (see: digest/GOST3411Digest.java; function: E(byte[] in, byte[] key); string: CipherParameters  param = new GOST28147Parameters(key,"D-A");)

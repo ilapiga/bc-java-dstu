@@ -157,9 +157,7 @@ public class ASN1InputStream
             switch (tagNo)
             {
                 case 7:
-                	
-                	
-                 return new DERUniversalString(defIn.toByteArray());
+                 return new DEROctetString(defIn.toByteArray());
                 case OCTET_STRING:
                     //
                     // yes, people actually do this...

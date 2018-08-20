@@ -1,5 +1,6 @@
 package org.bouncycastle.jcajce.provider.asymmetric;
 
+import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.bouncycastle.asn1.ua.UAObjectIdentifiers;
 import org.bouncycastle.jcajce.provider.asymmetric.dstu.KeyFactorySpi;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
@@ -37,6 +38,8 @@ public class DSTU4145
 
             addSignatureAlgorithm(provider, "GOST34311", "DSTU4145", PREFIX + "SignatureSpiLe", UAObjectIdentifiers.dstu4145le);
             addSignatureAlgorithm(provider, "GOST34311", "DSTU4145BE", PREFIX + "SignatureSpi", UAObjectIdentifiers.dstu4145be);
+            
+            //provider.addAlgorithm("Alg.Alias.Signature.GOST34311withDSTU4145", "DSTU4145");
         }
     }
 }
