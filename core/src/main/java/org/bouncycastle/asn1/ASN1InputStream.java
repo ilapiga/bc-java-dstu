@@ -156,8 +156,6 @@ public class ASN1InputStream
             // TODO There are other tags that may be constructed (e.g. BIT_STRING)
             switch (tagNo)
             {
-                case 7:
-                 return new DEROctetString(defIn.toByteArray());
                 case OCTET_STRING:
                     //
                     // yes, people actually do this...
