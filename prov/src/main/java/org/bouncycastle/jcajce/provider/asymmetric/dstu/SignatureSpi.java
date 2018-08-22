@@ -19,6 +19,7 @@ import org.bouncycastle.crypto.digests.GOST34311Digest;
 import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.signers.DSTU4145Signer;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
+import org.bouncycastle.jcajce.provider.digest.GOST34311;
 import org.bouncycastle.jce.interfaces.ECKey;
 
 public class SignatureSpi
@@ -42,12 +43,14 @@ public class SignatureSpi
         if (publicKey instanceof BCDSTU4145PublicKey)
         {
             param = ((BCDSTU4145PublicKey)publicKey).engineGetKeyParameters();
-            digest = new GOST34311Digest(expandSbox(((BCDSTU4145PublicKey)publicKey).getSbox()));
+            //digest = new GOST34311Digest(expandSbox(((BCDSTU4145PublicKey)publicKey).getSbox()));
+            digest = new GOST34311Digest();
         }
         else
         {
             param = ECUtil.generatePublicKeyParameter(publicKey);
-            digest = new GOST34311Digest(expandSbox(DSTU4145Params.getDefaultDKE()));
+            //digest = new GOST34311Digest(expandSbox(DSTU4145Params.getDefaultDKE()));
+            digest = new GOST34311Digest();
         }
 
         signer.init(false, param);

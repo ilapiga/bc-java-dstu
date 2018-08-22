@@ -235,6 +235,11 @@ public class BCDSTU4145PublicKey
                     reverseBytes(g_bytes);
                 }
                 spec = new org.bouncycastle.jce.spec.ECParameterSpec(curve, DSTU4145PointEncoder.decodePoint(curve, g_bytes), binary.getN());
+//            	ASN1ObjectIdentifier curveOid = new ASN1ObjectIdentifier("1.2.804.2.1.1.1.1.3.1.1.2.6");
+//                ECDomainParameters ecP = DSTU4145NamedCurves.getByOID(curveOid);
+//
+//                spec = new ECNamedCurveParameterSpec(curveOid.getId(), ecP.getCurve(), ecP.getG(), ecP.getN(), ecP.getH(), ecP.getSeed());
+
             }
         }
 
@@ -254,6 +259,12 @@ public class BCDSTU4145PublicKey
             }
             else
             {
+//            	ecSpec = new ECNamedCurveSpec(
+//                        "1.2.804.2.1.1.1.1.3.1.1.2.6",
+//                        ellipticCurve,
+//                        EC5Util.convertPoint(spec.getG()),
+//                        spec.getN(),
+//                        spec.getH());
                 ecSpec = new ECParameterSpec(
                     ellipticCurve,
                     EC5Util.convertPoint(spec.getG()),
@@ -269,6 +280,16 @@ public class BCDSTU4145PublicKey
         //this.q = curve.createPoint(new BigInteger(1, x), new BigInteger(1, y), false);
         this.ecPublicKey = new ECPublicKeyParameters(DSTU4145PointEncoder.decodePoint(curve, keyEnc), EC5Util.getDomainParameters(null, ecSpec));
     }
+    
+    public static byte[] hexStringToByteArray(String s){
+    	int len=s.length();
+    	byte[] data= new byte[len/2];
+    	for(int i=0;i<len;i+=2){
+    	data[i/2]=(byte)((Character.digit(s.charAt(i),16)<<4)
+    	+Character.digit(s.charAt(i+1),16));
+    	}
+    	return data;
+    	}
 
     public byte[] getSbox()
     {

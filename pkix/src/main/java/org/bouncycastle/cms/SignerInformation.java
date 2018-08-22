@@ -577,13 +577,10 @@ public class SignerInformation
 //            	 return contentVerifier.verify(readObject.getObject().et);
 //            }
 
-//            if(encName.equals("1.2.804.2.1.1.1.1.3.1.1")) {
-////            	ASN1InputStream io = new ASN1InputStream(this.getSignature());
-////        		DERApplicationSpecific readObject = (DERApplicationSpecific)io.readObject();
-//            	//readObject.getObject(readObject.getApplicationTag()).getEncoded()
-//            	DEROctetString oct = new DEROctetString(this.getSignature());
-//            	 return contentVerifier.verify(this.getSignature());
-//            }
+            if(encName.equals("1.2.804.2.1.1.1.1.3.1.1")) {           	
+            	DEROctetString oct = new DEROctetString(this.getSignature());
+            	 return contentVerifier.verify(oct.getEncoded());
+            }
             
 
             return contentVerifier.verify(this.getSignature());
